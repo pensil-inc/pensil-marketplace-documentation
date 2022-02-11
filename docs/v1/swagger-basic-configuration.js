@@ -7,7 +7,7 @@ module.exports = {
         contact: {
             name: "Pensil",
             url: "https://pensil.in",
-            email: "contact@pensil.in"
+            email: "founders@pensil.in"
         },
     },
     servers: [

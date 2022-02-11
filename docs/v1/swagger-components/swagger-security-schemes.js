@@ -5,7 +5,8 @@ module.exports = {
             schema: "bearer",
             bearerFormat: "JWT",
             in: "header",
-            name: "Authorization"
+            name: "Authorization",
+            description: "Add Authorization header with Bearer Token"
         },
         APIKEY: {
             type: "apiKey",
@@ -15,17 +16,20 @@ module.exports = {
         CLIENTID: {
             type: "apiKey",
             name: "CLIENTID",
-            in: "header"
+            in: "header",
+            description: "Request founders@pensil.in to create one."
         },
         CLIENTSECRET: {
             type: "apiKey",
             name: "CLIENTSECRET",
-            in: "header"
+            in: "header",
+            description: "Request founders@pensil.in to create one."
         },
         COMMUNITYID: {
             type: "apiKey",
             name: "COMMUNITYID",
-            in: "header"
+            in: "header",
+            description: "This is the community id."
         },
     }
 }

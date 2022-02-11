@@ -6,6 +6,11 @@ module.exports = {
             summary: "Create a new group",
             description: "Create a new group",
             operationId: "createGroup",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
             requestBody: {
                 required: true,
                 content: {
@@ -46,6 +51,9 @@ module.exports = {
             summary: "Get group details",
             description: "Get group details",
             operationId: "getGroupDetail",
+            security: [{
+                BearerToken: []
+            }, {}],
             parameters: [{
                 name: "groupId",
                 in: "path",
@@ -96,6 +104,11 @@ module.exports = {
             summary: "Update an existing group",
             description: "Update an existing Group",
             operationId: "updateGroup",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
             parameters: [{
                 name: "groupId",
                 in: "path",
@@ -181,6 +194,11 @@ module.exports = {
             summary: "Delete an existing group",
             description: "Delete an existing Group",
             operationId: "deleteGroup",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
             parameters: [{
                 name: "groupId",
                 in: "path",
