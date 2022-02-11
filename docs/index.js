@@ -4,13 +4,29 @@ const jsYaml = require('js-yaml');
 const docsV1 = require("./v1");
 
 const configureDocs = app => {
+
+    app.set('view engine', 'ejs');
+
     // yamls
     app.get('/v1/swagger.yaml', sendYaml(docsV1));
 
-    app.use('/v1', swaggerUi.serve, swaggerUi.setup(docsV1));
-    app.use('/', swaggerUi.serve, swaggerUi.setup(docsV1));
+    // swagger
+    app.use('/swagger/v1', swaggerUi.serve, swaggerUi.setup(docsV1));
+    app.use('/swagger', swaggerUi.serve, swaggerUi.setup(docsV1));
+
+    // redoc
+    app.use('/v1', redoc('/v1/swagger.yaml'));
+    app.use('/', redoc('/v1/swagger.yaml'));
 
     return app;
+}
+
+function redoc(yamlUrl) {
+    return (req, res) => {
+        return res.render('redoc', {
+            yamlUrl
+        });
+    }
 }
 
 function sendYaml(docs) {

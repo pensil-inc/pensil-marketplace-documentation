@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/thefallenmerc/pensil-marketplace-documentation#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
     "js-yaml": "^4.1.0",
     "nodemon": "^2.0.15",
