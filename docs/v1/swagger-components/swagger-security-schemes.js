@@ -1,19 +1,31 @@
 module.exports = {
     securitySchemes: {
-        clientId: {
+        BearerToken: {
+            type: "http",
+            schema: "bearer",
+            bearerFormat: "JWT",
+            in: "header",
+            name: "Authorization"
+        },
+        APIKEY: {
             type: "apiKey",
-            name: "clientId",
+            name: "APIKEY",
             in: "header"
         },
-        clientSecret: {
+        CLIENTID: {
             type: "apiKey",
-            name: "clientSecret",
+            name: "CLIENTID",
             in: "header"
         },
-        communityId: {
+        CLIENTSECRET: {
             type: "apiKey",
-            name: "communityId",
+            name: "CLIENTSECRET",
             in: "header"
-        }
+        },
+        COMMUNITYID: {
+            type: "apiKey",
+            name: "COMMUNITYID",
+            in: "header"
+        },
     }
 }
