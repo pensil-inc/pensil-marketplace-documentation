@@ -19,7 +19,32 @@ module.exports = {
                                 email: {
                                     type: "string",
                                     example: "hachacha@gmail.com",
+                                    description: "Required",
                                     required: true
+                                },
+                                createUser: {
+                                    type: "boolean",
+                                    example: true,
+                                    description: "Optional (default: false) - If true, creates a new user if not found",
+                                    required: false
+                                },
+                                name: {
+                                    type: "string",
+                                    example: "Yamcha",
+                                    description: "Required with createUser",
+                                    required: false
+                                },
+                                picture: {
+                                    type: "string",
+                                    example: "https://example.com/yamcha.jpg",
+                                    description: "Required with createUser",
+                                    required: false
+                                },
+                                description: {
+                                    type: "string",
+                                    example: "Yamcha is a ninja",
+                                    description: "Required with createUser",
+                                    required: false
                                 }
                             }
                         }
@@ -129,22 +154,25 @@ module.exports = {
                                 email: {
                                     type: "string",
                                     example: "hachacha@gmail.com",
-                                    description: "This is the email of the user whose details needs updation",
+                                    description: "Required | This is the email of the user whose details needs updation",
                                     required: true
                                 },
                                 name: {
                                     type: "string",
                                     example: "Yamcha",
+                                    description: "Required",
                                     required: true
                                 },
                                 picture: {
                                     type: "string",
                                     example: "https://google.com/image.png",
+                                    description: "URL for the profile picture of the user",
                                     required: false
                                 },
                                 description: {
                                     type: "string",
                                     example: "I am Yamcha",
+                                    description: "Short description about the user",
                                     required: false
                                 }
                             }
