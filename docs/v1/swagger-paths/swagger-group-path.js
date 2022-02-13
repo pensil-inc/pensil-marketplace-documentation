@@ -243,5 +243,221 @@ module.exports = {
                 }
             }
         }
+    },
+    // user manipulation
+    "/group/{groupId}/members/{userId}/update-role": {
+        post: {
+            tags: ["Group User"],
+            summary: "Update group user role",
+            description: "This api can be used to update user role in group and also add user to the group",
+            operationId: "updateGroupUserRole",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "userId",
+                in: "path",
+                description: "User id",
+                required: true,
+            }],
+            requestBody: {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                role: {
+                                    type: "string",
+                                    example: "admin",
+                                    description: "Can be any of admin, moderator, user",
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            responses: {
+                "200": {
+                    description: "Success Response for update group user role",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "User role changed in group!",
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    description: "Error Response for update group user role",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Forbidden"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "403": {
+                    description: "Error Response for update group user role",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Cannot change role of self!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "404": {
+                    description: "Error Response for update group user role",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Resource with specific id not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "422": {
+                    description: "Validation error",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Validation error!"
+                                    },
+                                    errors: {
+                                        type: "object",
+                                        properties: {
+                                            role: {
+                                                type: "array",
+                                                items: {
+                                                    type: "string",
+                                                    example: "The role field is required!"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+        }
+    },
+    "/group/{groupId}/remove-user/{userId}": {
+        post: {
+            tags: ["Group User"],
+            summary: "Remove user from group",
+            description: "This api can be used to remove user from group",
+            operationId: "removeUserFromGroup",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "userId",
+                in: "path",
+                description: "User id",
+                required: true,
+            }],
+            responses: {
+                "200": {
+                    description: "Success Response for remove user from group",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "User removed from group!",
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    description: "Error Response for remove user from group",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Forbidden"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "404": {
+                    description: "Error Response for remove user from group",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Resource with specific id not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
