@@ -5,7 +5,7 @@ module.exports = {
             description: "Pensil API"
         },
         {
-            url: "https://pensil.in/api/",
+            url: "https://api.pensil.in/api/",
             description: "Pensil API"
         },
     ],
