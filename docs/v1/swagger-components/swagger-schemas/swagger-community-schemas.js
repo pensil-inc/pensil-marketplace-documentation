@@ -79,6 +79,9 @@ module.exports = {
             "expandPostDirectory": {
                 "type": "boolean"
             },
+            "disableHeaderDropdown": {
+                "type": "boolean"
+            },
             "subscribersCount": {
                 "type": "number",
                 "example": "4"
