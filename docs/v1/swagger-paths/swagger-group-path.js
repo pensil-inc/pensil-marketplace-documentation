@@ -459,5 +459,202 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    // section level user manipulation
+    "/group/{groupId}/section/{sectionId}/join-request/{userId}/accept": {
+        post: {
+            tags: ["Private Section"],
+            summary: "Accept user in private section",
+            description: "This api can be used to accept user request or add user to private section.",
+            operationId: "acceptJoinRequestInPrivateSection",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "sectionId",
+                in: "path",
+                description: "Section id",
+                required: true,
+            }, {
+                name: "userId",
+                in: "path",
+                description: "User id",
+                required: true,
+            }],
+            responses: {
+                "200": {
+                    description: "Accepted section join request response!",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Accepted section join request!",
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    description: "Error Response for update section user status",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Section nonexisting or not closed"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "403": {
+                    description: "Error Response for update section user status",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Forbidden!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "404": {
+                    description: "Error Response for update section user status",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Resource with specific id not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/group/{groupId}/section/{sectionId}/join-request/{userId}/reject": {
+        post: {
+            tags: ["Private Section"],
+            summary: "Reject user in private section",
+            description: "This api can be used to reject user request or remove user from private section.",
+            operationId: "rejectJoinRequestInPrivateSection",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "sectionId",
+                in: "path",
+                description: "Section id",
+                required: true,
+            }, {
+                name: "userId",
+                in: "path",
+                description: "User id",
+                required: true,
+            }],
+            responses: {
+                "200": {
+                    description: "Rejected section join request response!",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Rejected section join request!",
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    description: "Error Response for update section user status",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Section nonexisting or not closed"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "403": {
+                    description: "Error Response for update section user status",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Forbidden!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "404": {
+                    description: "Error Response for update section user status",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Resource with specific id not found"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
 }
