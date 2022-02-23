@@ -244,6 +244,52 @@ module.exports = {
             }
         }
     },
+    "/group/{groupId}/members": {
+        // GET GROUP DETAILS
+        get: {
+            tags: ["Group"],
+            summary: "Get group members list",
+            description: "Get group details",
+            operationId: "getGroupMembersList",
+            security: [{
+                BearerToken: []
+            }, {}],
+            parameters: [
+                {
+                    name: "groupId",
+                    in: "path",
+                    description: "Group id",
+                    required: true,
+                },
+                {
+                    name: "tabId",
+                    in: "query",
+                    description: "Section id (if provided, tabStatus will be returned as well)",
+                    required: false,
+                }
+            ],
+            responses: {
+                "200": {
+                    description: "Success Response",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    groupMembers: {
+                                        type: "array",
+                                        items: {
+                                            $ref: "#/components/schemas/GroupMember"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+            }
+        },
+    },
     // user manipulation
     "/group/{groupId}/members/{userId}/update-role": {
         post: {
@@ -459,6 +505,105 @@ module.exports = {
                 }
             }
         }
+    },
+    // section related
+    "/group/{groupId}/tab/{sectionId}": {
+        post: {
+            tags: ["Group Section"],
+            summary: "Edit group section",
+            description: "This api can be used to edit group section",
+            operationId: "editGroupSection",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "sectionId",
+                in: "path",
+                description: "Section id",
+                required: true,
+            }],
+            requestBody: {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/requestBodies/CreateSection"
+                        }
+                    }
+                }
+            },
+            responses: {
+                "200": {
+                    description: "Success Response for edit group section",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Update the group tab!"
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        delete: {
+            tags: ["Group Section"],
+            summary: "Delete group section",
+            description: "This api can be used to delete group section",
+            operationId: "deleteGroupSection",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "sectionId",
+                in: "path",
+                description: "Section id",
+                required: true,
+            }],
+            responses: {
+                "200": {
+                    description: "Success Response for delete group section",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Deleted the group tab!"
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
     },
     // section level user manipulation
     "/group/{groupId}/section/{sectionId}/join-request/{userId}/accept": {

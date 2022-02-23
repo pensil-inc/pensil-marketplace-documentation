@@ -149,6 +149,58 @@ module.exports = {
                     required: false,
                 }
             }
+        },
+        // sections
+        CreateSection: {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "example": "Get Started",
+                    "required": true,
+                },
+                "emoji": {
+                    "type": "string",
+                    "example": "🌼",
+                    "required": false,
+                    "default": "#"
+                },
+                "sectionType": {
+                    "type": "string",
+                    "example": "generic",
+                    "required": false,
+                    "default": "generic",
+                    description: "can be generic/realtime"
+                },
+                "postLevel": {
+                    "type": "string",
+                    "example": "admin",
+                    "required": false,
+                    "default": "anyone",
+                    description: "can be anyone/admin"
+                },
+                "isClosed": {
+                    "type": "boolean",
+                    "example": false,
+                    "required": false,
+                    "default": false,
+                    description: "whether the section is closed or not (user will need addition access request for this)"
+                },
+                "isPrivate": {
+                    "type": "boolean",
+                    "example": false,
+                    "required": false,
+                    "default": false,
+                    description: "whether the section is private or not (user cannot request if a closed section is also private)"
+                },
+                "sortBy": {
+                    "type": "string",
+                    "example": "latest",
+                    "required": false,
+                    "default": "latest",
+                    description: "can be latest/oldest"
+                }
+            }
         }
     }
 }

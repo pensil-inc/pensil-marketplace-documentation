@@ -128,5 +128,37 @@ module.exports = {
                 "example": "2021-09-27T13:59:11.202Z"
             }
         }
+    },
+    "GroupMember": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "example": "620f6c9607166611e4221793"
+            },
+            "name": {
+                "type": "string",
+                "example": "Shubham Singh Chahar"
+            },
+            "isVerifiedByPensil": {
+                "type": "boolean"
+            },
+            "groupStatus": {
+                "type": "string",
+                "example": "joined"
+            },
+            "groupRole": {
+                "type": "string",
+                "example": "admin"
+            },
+            "tabStatus": {
+                "type": "string",
+                "example": "joined"
+            },
+            "picture": {
+                "type": "string",
+                "example": "http://localhost:3000/default_pictures/user_4.png"
+            }
+        }
     }
 }
