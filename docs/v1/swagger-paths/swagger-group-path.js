@@ -247,7 +247,7 @@ module.exports = {
     "/group/{groupId}/members": {
         // GET GROUP DETAILS
         get: {
-            tags: ["Group"],
+            tags: ["Group User"],
             summary: "Get group members list",
             description: "Get group details",
             operationId: "getGroupMembersList",
