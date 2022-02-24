@@ -287,7 +287,7 @@ module.exports = {
     "/3pc/subscribe-user/{userId}": {
         post: {
             tags: ["Third Party APIs for Community"],
-            summary: "Add user to community",
+            summary: "Add/Update user role to community",
             operationId: "thirdPartyAPICSubscribeUserToCommunity",
             security: [{
                 clientId: [],
