@@ -5,9 +5,9 @@ module.exports = {
             summary: "Generate community user token",
             operationId: "thirdPartyAPICGenerateUserToken",
             security: [{
-                clientId: [],
-                clientSecret: [],
-                communityId: []
+                CLIENTID: [],
+                CLIENTSECRET: [],
+                COMMUNITYID: []
             }],
             requestBody: {
                 required: true,
@@ -140,9 +140,9 @@ module.exports = {
             summary: "Update community user details",
             operationId: "thirdPartyAPICUpdateUserDetails",
             security: [{
-                clientId: [],
-                clientSecret: [],
-                communityId: []
+                CLIENTID: [],
+                CLIENTSECRET: [],
+                COMMUNITYID: []
             }],
             requestBody: {
                 required: true,
@@ -290,9 +290,9 @@ module.exports = {
             summary: "Add/Update user role to community",
             operationId: "thirdPartyAPICSubscribeUserToCommunity",
             security: [{
-                clientId: [],
-                clientSecret: [],
-                communityId: []
+                CLIENTID: [],
+                CLIENTSECRET: [],
+                COMMUNITYID: []
             }],
             requestBody: {
                 required: true,
