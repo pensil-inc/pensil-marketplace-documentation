@@ -283,5 +283,152 @@ module.exports = {
                 }
             }
         }
+    },
+    "/3pc/subscribe-user/{userId}": {
+        post: {
+            tags: ["Third Party APIs for Community"],
+            summary: "Add user to community",
+            operationId: "thirdPartyAPICSubscribeUserToCommunity",
+            security: [{
+                clientId: [],
+                clientSecret: [],
+                communityId: []
+            }],
+            requestBody: {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            type: "object",
+                            properties: {
+                                role: {
+                                    type: "string",
+                                    example: "user",
+                                    description: "Role of the user in community, can be user or admin (if the role is admin, user will be added and made admin in all existing groups)",
+                                    required: false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            responses: {
+                "200": {
+                    description: "Success Response for updating user subscription",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "User subbed to community as admin!"
+                                    },
+                                    user: {
+                                        $ref: "#/components/schemas/UserLogin"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    description: "communityId or userId invalid",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    "message": {
+                                        type: "string",
+                                        example: "User not found!"
+                                    },
+                                    "error": {
+                                        type: "object",
+                                        properties: {}
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "401": {
+                    description: "Unauthenticated user response",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    "message": {
+                                        type: "string",
+                                        example: "Unauthenticated!"
+                                    },
+                                    "error": {
+                                        type: "string",
+                                        example: "clientid, clientsecret and communityid are required in header!"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "403": {
+                    description: "Forbidden Response",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    "message": {
+                                        type: "string",
+                                        example: "Third party Auth not supported by this community."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "404": {
+                    description: "Not found response, triggers when user is not found.",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    "message": {
+                                        type: "string",
+                                        example: "Not found!"
+                                    },
+                                }
+                            }
+                        }
+                    }
+                },
+                "422": {
+                    description: "Validation error response",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    "errors": {
+                                        "type": "object",
+                                        "properties": {
+                                            "role": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "example": "Role should be admin or user"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
