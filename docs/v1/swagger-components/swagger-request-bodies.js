@@ -201,6 +201,89 @@ module.exports = {
                     description: "can be latest/oldest"
                 }
             }
+        },
+        // event related
+        CreateCommunityEvent: {
+            type: "object",
+            properties: {
+                "startTime": {
+                    "type": "string",
+                    "example": "2022-03-30T16:08:43.594Z",
+                    "required": true,
+                    "description": "required",
+                },
+                "endTime": {
+                    "type": "string",
+                    "example": "2022-03-30T17:08:43.594Z",
+                    "required": true,
+                    "description": "required",
+                },
+                "title": {
+                    "type": "string",
+                    "example": "Event with admin participant with comm",
+                    "required": true,
+                    "description": "required",
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Event with admin participant with comm"
+                },
+                "location": {
+                    "type": "string",
+                    "example": ""
+                },
+                "createMeeting": {
+                    "type": "boolean",
+                    "example": "true",
+                    "description": "Will create meeting on pensil platform if true, is ignored while editing event",
+                },
+                "eventHost": {
+                    "type": "mongoid",
+                    "example": "asdasdjaqiej3en23edqweqwe",
+                    "description": "Will default to creator of meeting if not provided"
+                },
+                "maximumRegistrations": {
+                    "type": "string",
+                    "example": "3",
+                    "description": "0 means unlimited registrations"
+                },
+                "webURL": {
+                    "type": "string",
+                    "example": "https://google.com"
+                }
+            }
+        },
+        InviteSectionsToCommunity: {
+            type: "object",
+            properties: {
+                "groups": {
+                    "type": "array",
+                    "required": true,
+                    "description": "Required",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "example": "620f6cb107166611e42217b2",
+                                "required": true,
+                                "description": "Required | Group Id"
+                            },
+                            "sections": {
+                                "type": "array",
+                                "required": true,
+                                "description": "Required",
+                                "items": {
+                                    "type": "string",
+                                    "example": "620f6cb107166611e42217b3",
+                                    "required": true,
+                                    "description": "Required | Section Id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
