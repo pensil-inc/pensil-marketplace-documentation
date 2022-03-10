@@ -507,6 +507,61 @@ module.exports = {
         }
     },
     // section related
+    "/group/{groupId}/tab": {
+        post: {
+            tags: ["Group Section"],
+            summary: "Add group section",
+            description: "This api can be used to add group section",
+            operationId: "addGroupSection",
+            security: [{
+                BearerToken: []
+            }, {
+                APIKEY: []
+            }],
+            parameters: [{
+                name: "groupId",
+                in: "path",
+                description: "Group id",
+                required: true,
+            }, {
+                name: "sectionId",
+                in: "path",
+                description: "Section id",
+                required: true,
+            }],
+            requestBody: {
+                required: true,
+                content: {
+                    "application/json": {
+                        schema: {
+                            $ref: "#/components/requestBodies/CreateSection"
+                        }
+                    }
+                }
+            },
+            responses: {
+                "200": {
+                    description: "Success Response for add group section",
+                    content: {
+                        "application/json": {
+                            schema: {
+                                type: "object",
+                                properties: {
+                                    message: {
+                                        type: "string",
+                                        example: "Added tab to group!"
+                                    },
+                                    group: {
+                                        $ref: "#/components/schemas/Group"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+    },
     "/group/{groupId}/tab/{sectionId}": {
         post: {
             tags: ["Group Section"],
