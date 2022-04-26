@@ -9,7 +9,7 @@ const readmes = express.Router();
 
 readmes.get("/", renderIndex);
 
-readmes.get("/direct-message-sockets", renderMd("direct-message-sockets"));
+readmes.get("/:fileName", renderMd);
 
 function renderIndex(req, res) {
     fs.readdir("docs/v1/readmes/mds", (err, files) => {
@@ -32,10 +32,11 @@ function renderIndex(req, res) {
     });
 }
 
-function renderMd(fileName) {
-    return (req, res) => {
-        res.header("Content-Type", "text/html");
-        return res.send(`
+function renderMd(req, res) {
+    const fileName = req.params.fileName;
+
+    res.header("Content-Type", "text/html");
+    return res.send(`
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,7 +50,6 @@ href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.1/styles/default.min.cs
         ${md.render(fs.readFileSync("docs/v1/readmes/mds/" + fileName + ".md", "utf8"))}
     </body>
 </html>`);
-    }
 }
 
 module.exports = readmes;

@@ -284,6 +284,24 @@ module.exports = {
                     }
                 }
             }
+        },
+        // section chat related
+        CreateSectionChat: {
+            type: "object",
+            properties: {
+                "description": {
+                    "type": "string",
+                    "example": "sharing a post"
+                },
+                "groupId": {
+                    "type": "string",
+                    "example": "6267764968cdcaba2948abc9"
+                },
+                "tabId": {
+                    "type": "string",
+                    "example": "6267e30eea59d61897d649d9"
+                }
+            }
         }
     }
 }
