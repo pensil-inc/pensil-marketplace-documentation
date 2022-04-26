@@ -2,6 +2,7 @@
 
 Initialize listeners
 ```javascript
+      socket.on("direct-message:new-chat", newChatListener);
       socket.on(
         `direct-message:${userId}:message-received`,
         messageReceivedListener
