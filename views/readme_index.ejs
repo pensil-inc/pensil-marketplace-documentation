@@ -1,0 +1,13 @@
+<!-- iterate all readmes and create link to them -->
+<div class="readme-index">
+    <h1>Readme Index</h1>
+    <ul>
+        <% readmes.forEach(readme => { %>
+            <li>
+                <a href="<%= readme.url %>">
+                    <%= readme.title %>
+                </a>
+            </li>
+            <% }); %>
+    </ul>
+</div>

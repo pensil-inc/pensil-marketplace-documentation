@@ -1,4 +1,36 @@
 module.exports = {
+    "ChatUser": {
+        "type": "object",
+        "properties": {
+            "id": {
+                "type": "string",
+                "example": "6267766468cdcaba2948ac9c"
+            },
+            "name": {
+                "type": "string",
+                "example": "Rengoku"
+            },
+            "userId": {
+                "type": "string",
+                "example": "rengoku2011"
+            },
+            "isVerifiedByPensil": {
+                "type": "boolean"
+            },
+            "picture": {
+                "type": "string",
+                "example": "http://localhost:3000/default_pictures/user_5.png"
+            },
+            "isFollowedByMe": {
+                "type": "boolean"
+            },
+            "unreadMessageCount": {
+                "type": "integer",
+                "format": "int32",
+                "example": "0"
+            }
+        }
+    },
     "UserCompact": {
         "type": "object",
         "properties": {

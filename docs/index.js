@@ -3,9 +3,14 @@ const jsYaml = require('js-yaml');
 
 const docsV1 = require("./v1");
 
+const readmes = require("./v1/readmes");
+
 const configureDocs = app => {
 
     app.set('view engine', 'ejs');
+
+    // readmes
+    app.use("/readme", readmes);
 
     // yamls
     app.get('/v1/swagger.yaml', sendYaml(docsV1));

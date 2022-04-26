@@ -24,6 +24,7 @@
     "express": "^4.17.2",
     "js-yaml": "^4.1.0",
     "nodemon": "^2.0.15",
+    "remarkable": "^2.0.1",
     "swagger-ui-express": "^4.3.0"
   }
 }
