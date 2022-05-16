@@ -302,6 +302,73 @@ module.exports = {
                     "example": "6267e30eea59d61897d649d9"
                 }
             }
+        },
+        // post related
+        CreatePost: {
+            type: "object",
+            properties: {
+                "title": {
+                    "type": "string",
+                    "example": "string|max:180"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "string"
+                },
+                "tags": {
+                    "type": "string",
+                    "example": "array"
+                },
+                "groupId": {
+                    "type": "string",
+                    "example": "required|string"
+                },
+                "sharedId": {
+                    "type": "string",
+                    "example": "string"
+                },
+                "embedCode": {
+                    "type": "string",
+                    "example": "string"
+                },
+                "tabId": {
+                    "type": "string",
+                    "example": "required_with:groupId|string"
+                },
+                "tags.*": {
+                    "type": "string",
+                    "example": "string"
+                },
+                "meta": {
+                    "type": "object",
+                    "properties": {
+                        "slug": {
+                            "type": "string",
+                            "example": "string|max:255"
+                        },
+                        "title": {
+                            "type": "string",
+                            "example": "string|max:255"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "string|max:255"
+                        },
+                        "openGraphTitle": {
+                            "type": "string",
+                            "example": "string|max:255"
+                        },
+                        "openGraphDescription": {
+                            "type": "string",
+                            "example": "string|max:255"
+                        },
+                        "openGraphImage": {
+                            "type": "string",
+                            "example": "string|max:255"
+                        }
+                    }
+                }
+            }
         }
     }
 }
